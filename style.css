@@ -1,0 +1,73 @@
+.grimage .clicker:hover{
+    cursor: pointer;
+}
+.grimage{
+/* styles for the wrapper */
+}
+.grimage img{
+  /* styles for the enabled image... */
+}
+
+/* grimage_modal Styles */
+
+.grimage_modal:before {
+  content: "";
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.grimage_modal:target:before {
+  display: block;
+}
+.grimage_modal:target .grimage_modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 20%;
+}
+.grimage_modal-dialog {
+  background: #fefefe;
+  /*border: #333 solid 1px;
+  border-radius: 5px;*/
+  margin-left: -200px;
+  position: fixed;
+  left: 50%;
+  top: -100%;
+  z-index: 11;
+  width: 360px;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  -webkit-box-shadow: 2px 2px 2px 2px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,.2);
+}
+.grimage_modal-body {
+  padding: 20px;
+}
+.grimage_modal-header,
+.grimage_modal-footer {
+  padding: 10px 20px;
+}
+.grimage_modal-header {
+  /*border-bottom: #eee solid 1px;*/
+}
+.grimage_modal-header h2 {
+  font-size: 20px;
+}
+.grimage_modal-footer {
+  /*border-top: #eee solid 1px;*/
+  text-align: right;
+}
+/*ADDED TO STOP SCROLLING TO TOP*/
+#grimage_modalclose {
+  display: none;
+}
