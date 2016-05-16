@@ -18,7 +18,7 @@ class Grimage
 	remove_filter( 'the_content', 'wptexturize' );
         add_filter('the_content',array($this,'replaceImagesWithGrimages'));
 	/** Putting the_content back to the way it was... */
-	add_filter( 'the_content', 'wptexturize' );
+	//add_filter( 'the_content', 'wptexturize' );
 
 
     add_action('wp_head',array($this,'hook_js'));
