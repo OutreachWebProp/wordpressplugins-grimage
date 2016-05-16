@@ -130,7 +130,7 @@ class Grimage
     if(!is_single()) return $the_content;
 
     $html = $the_content;
-    $dom = new DOMDocument();
+    $dom = new DOMDocument('1.0','utf-8');
     $dom->loadHTML($html);
     $span = $dom->createElement('span');
     $span->setAttribute('class', 'grimage');
