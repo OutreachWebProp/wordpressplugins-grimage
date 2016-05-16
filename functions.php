@@ -92,7 +92,7 @@ class Grimage
             var image_url = $(e.currentTarget).siblings('img').attr('src');
             FB.ui({
                 method: 'share',
-                href: '<?php echo get_permalink();?>',
+                href: '<?php echo the_permalink();?>',
  //               title: 'This should be set in the meta headers..',
                 picture: image_url,
  //               caption: 'This should be set in the meta headers..',
@@ -148,7 +148,7 @@ class Grimage
       }
     }
     $html = $dom->saveHTML();
-    return $html;
+    return html_entity_decode($html);
   }
   public function grimage_modal(){?>
       <!-- Modal -->
