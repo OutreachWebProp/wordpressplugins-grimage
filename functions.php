@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 Plugin Name: Grimage
 Plugin URI: http://yourlocalwebmaster.com
@@ -130,7 +130,7 @@ class Grimage
     if(!is_single()) return $the_content;
 
     $html = $the_content;
-    $dom = new DOMDocument('1.0','utf-8');
+    $dom = new DOMDocument('1.0','UTF-8');
     $dom->loadHTML($html);
     $span = $dom->createElement('span');
     $span->setAttribute('class', 'grimage');
