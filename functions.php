@@ -151,7 +151,7 @@ class Grimage
       }
     }
     $html = $dom->saveHTML();
-    return $html;
+    return htmlentities($html);
   }
   public function grimage_modal(){?>
       <!-- Modal -->
