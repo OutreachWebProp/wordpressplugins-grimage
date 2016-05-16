@@ -13,7 +13,14 @@ class Grimage
   public function __construct()
   {
     add_action('wp_enqueue_scripts', array($this, 'myScripts'));
-    add_filter('the_content',array($this,'replaceImagesWithGrimages'));
+
+	/** remove the wordpress filtesr first or else will show foreign chars in content **/
+	remove_filter( 'the_content', 'wptexturize' );
+        add_filter('the_content',array($this,'replaceImagesWithGrimages'));
+	/** Putting the_content back to the way it was... */
+	add_filter( 'the_content', 'wptexturize' );
+
+
     add_action('wp_head',array($this,'hook_js'));
     add_action('wp_footer',array($this,'grimage_modal'));
     add_action('admin_menu',array($this,'register_grimage_admin_menus'));
@@ -126,6 +133,9 @@ class Grimage
   }
 
   public function replaceImagesWithGrimages($the_content){
+
+
+
     // This will hide the share button from index/archive pages..
     if(!is_single()) return $the_content;
 
