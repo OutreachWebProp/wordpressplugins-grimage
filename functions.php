@@ -132,7 +132,7 @@ class Grimage
     // This will hide the share button from index/archive pages..
     if(!is_single()) return $the_content;
 
-    $html = html_entity_decode($the_content);
+    $html = htmlspecialchars($the_content);
     $dom = new DOMDocument('1.0','UTF-8');
     $dom->loadHTML($html);
     $span = $dom->createElement('span');
@@ -151,7 +151,7 @@ class Grimage
       }
     }
     $html = $dom->saveHTML();
-    return htmlspecialchars($html);
+    return $html;
   }
   public function grimage_modal(){?>
       <!-- Modal -->
