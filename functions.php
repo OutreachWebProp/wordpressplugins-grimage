@@ -87,8 +87,21 @@ class Grimage
 
 (function ( $ ){
     $(document).ready(function(){
-
-        $('.grimage .clicker').click(function(e){
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+          }
+        }
+        return "";
+      }
+      $('.grimage .clicker').click(function(e){
             var image_url = $(e.currentTarget).siblings('img').attr('src');
             FB.ui({
                 method: 'share',
@@ -100,26 +113,30 @@ class Grimage
             }, function(response){
                 // Debug response (optional)
                 //console.log(response);
-              FB.api('/me/likes/<?php echo get_option('grimage_facebook_appid');?>', function(response) {
-                console.log(response);
-              });
-              setTimeout(function(){
-                    // click the modal button to show the modal :)
-                    //$('#show_grimage_modal').click();
-                    $('.grimage_modal .grimage_modal-dialog').css('-webkit-transform','translate(0, 0)');
-                    $('.grimage_modal .grimage_modal-dialog').css('-ms-transform','translate(0, 0)');
-                    $('.grimage_modal .grimage_modal-dialog').css('transform','translate(0, 0)');
-                    $('.grimage_modal .grimage_modal-dialog').css('top','20%');
-                    $('.grimage_modalclose').click(function(e){
-                        e.preventDefault();
-                        $('.grimage_modal').hide();
-                    });
-                },500);
-               
+              // Make sure the modal hasn't been shown in the last 7 days,  and make sure the modal hasn't already been clicked like.
+              if(getCookie('grimage_modal_shown') == "" && getCookie('grimage_modal_liked') == "") {
+                setTimeout(function () {
+                  // click the modal button to show the modal :)
+                  //$('#show_grimage_modal').click();
+                  $('.grimage_modal .grimage_modal-dialog').css('-webkit-transform', 'translate(0, 0)');
+                  $('.grimage_modal .grimage_modal-dialog').css('-ms-transform', 'translate(0, 0)');
+                  $('.grimage_modal .grimage_modal-dialog').css('transform', 'translate(0, 0)');
+                  $('.grimage_modal .grimage_modal-dialog').css('top', '20%');
+                  $('.grimage_modalclose').click(function (e) {
+                    e.preventDefault();
+
+                    // User clicked the close button, so lets set a cookie to prevent the modal from popping up for a few days..
+                    document.cookie = "grimage_modal_shown=true; expires=<?php echo date('D, d M Y', strtotime('+1 WEEK'));?> 12:00:00 UTC";
+                    $('.grimage_modal').hide();
+                  });
+                }, 500);
+              } // end if hide modal...
             });
         });
       FB.Event.subscribe('edge.create', function(response) {
+        document.cookie = "grimage_modal_liked=true; expires=<?php echo date( 'D, d M Y', strtotime('+1 YEAR'));?> 12:00:00 UTC";
         console.log('like button clicked!');
+
         $('.grimage_modal').hide();
       });
 
