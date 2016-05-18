@@ -115,8 +115,8 @@ class Grimage
                         $('.grimage_modal').hide();
                     });
                 },500);
-
-            });*/
+               */
+            });
         });
       FB.Event.subscribe('edge.create', function(response) {
         console.log('like button clicked!');
