@@ -101,7 +101,7 @@ class Grimage
                 // Debug response (optional)
                 //console.log(response);
               FB.api('/me/likes/<?php echo get_option('grimage_facebook_appid');?>', function(response) {
-                console.log(response.data);
+                console.log(response);
               });
               /*setTimeout(function(){
                     // click the modal button to show the modal :)
