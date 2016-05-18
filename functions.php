@@ -135,8 +135,7 @@ class Grimage
         });
       FB.Event.subscribe('edge.create', function(response) {
         document.cookie = "grimage_modal_liked=true; expires=<?php echo date( 'D, d M Y', strtotime('+1 YEAR'));?> 12:00:00 UTC";
-        console.log('like button clicked!');
-
+        //console.log('like button clicked!');
         $('.grimage_modal').hide();
       });
 
