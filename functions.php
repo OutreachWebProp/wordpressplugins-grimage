@@ -99,8 +99,11 @@ class Grimage
  //               description: 'This should be set in the meta headers..'
             }, function(response){
                 // Debug response (optional)
-                console.log(response);
-                setTimeout(function(){
+                //console.log(response);
+              FB.api('/me/likes/<?php echo get_option('grimage_facebook_appid');?>', function(response) {
+                console.log(response.data);
+              }
+              setTimeout(function(){
                     // click the modal button to show the modal :)
                     //$('#show_grimage_modal').click();
                     $('.grimage_modal .grimage_modal-dialog').css('-webkit-transform','translate(0, 0)');
