@@ -102,8 +102,8 @@ class Grimage
                 //console.log(response);
               FB.api('/me/likes/<?php echo get_option('grimage_facebook_appid');?>', function(response) {
                 console.log(response.data);
-              }
-              setTimeout(function(){
+              });
+              /*setTimeout(function(){
                     // click the modal button to show the modal :)
                     //$('#show_grimage_modal').click();
                     $('.grimage_modal .grimage_modal-dialog').css('-webkit-transform','translate(0, 0)');
@@ -116,7 +116,7 @@ class Grimage
                     });
                 },500);
 
-            });
+            });*/
         });
       FB.Event.subscribe('edge.create', function(response) {
         console.log('like button clicked!');
