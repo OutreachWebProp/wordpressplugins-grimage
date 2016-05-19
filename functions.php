@@ -74,7 +74,7 @@ class Grimage
 
         <div>
           <label for="grimagecustomcss">Custom CSS</label><br/>
-                    <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_customcss')); ?></textarea>
+                    <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_grimagecustomcss')); ?></textarea>
         </div>
 
         <div>
