@@ -4,7 +4,7 @@ Plugin Name: Grimage
 Plugin URI: http://yourlocalwebmaster.com
 Description: Filters all images in content and wraps in a grimage span (grant image) which launches the FB share onclick w/ THAT image loaded into the status window. Apply a class of "nogrimage" to the image you do not want this to occur on.
 Author: Grant Kimball
-Version: 1.0
+Version: 1.1
 Author URI: http://yourlocalwebmaster.com
  */
 
@@ -24,7 +24,7 @@ class Grimage
   }
 
   public function admin_stuff(){
-    add_action('admin_menu',array($this,'register_grimage_admin_menus'));
+    add_action( 'admin_menu', array($this,'register_grimage_admin_menus'));
   }
 
   public function myScripts()
@@ -36,7 +36,7 @@ class Grimage
 
     public function register_grimage_admin_menus(){
         //string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null
-        add_menu_page('Grimage settings','Grimage Settings','manage_options','grimage_options',array($this,'grimage_options_page'));
+      add_options_page('Grimage settings','Grimage Settings','manage_options','grimage_options',array($this,'grimage_options_page'));
     }
 
     public function grimage_options_page(){
