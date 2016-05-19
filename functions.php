@@ -69,18 +69,12 @@ class Grimage
         </div>
         <div>
           <label for="modalcontent">Modal Content</label><br/>
-                    <textarea name="modalcontent" id="modalcontent" style="width:50%;height:400px;">
-                    <?php //todo:: make this work!
-                    ?>
-                    <?php echo stripslashes(get_option('grimage_modalcontent')); ?>
-                </textarea>
+                    <textarea name="modalcontent" id="modalcontent" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_modalcontent')); ?></textarea>
         </div>
 
         <div>
-          <label for="grimagecustomcss">Modal Content</label><br/>
-                    <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;">
-                    <?php echo stripslashes(get_option('grimage_customcss')); ?>
-                </textarea>
+          <label for="grimagecustomcss">Custom CSS</label><br/>
+                    <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_customcss')); ?></textarea>
         </div>
 
         <div>
