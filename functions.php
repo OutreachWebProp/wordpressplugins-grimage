@@ -12,7 +12,7 @@ class Grimage
 {
   public function __construct()
   {
-   add_action('admin_init',array($this,'register_grimage_admin_menus'));
+   add_action('admin_menu',array($this,'register_grimage_admin_menus'));
    add_action('wp_loaded',array($this,'my_front_end_stuff'));
   }
 
