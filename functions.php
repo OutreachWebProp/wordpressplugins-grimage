@@ -24,6 +24,7 @@ class Grimage
     add_action('wp_enqueue_scripts', array($this, 'myScripts'));
     add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
     add_action('wp_head', array($this, 'hook_js'));
+    add_action('wp_head', array($this, 'hook_css'));
     add_action('wp_footer', array($this, 'grimage_modal'));
   }
 
