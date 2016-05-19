@@ -103,13 +103,14 @@ class Grimage
    * The CSS that gets added to the head.  This is dynamic from the admin settings -> grimage settings.
    */
   public function hook_css()
-  {
-    $css = '<style type="text/css">';
-    $css .= get_option('grimage_grimagecustomcss');
-    $css .= '</style>';
-    return $css;
-
-  }
+  {?>
+    <style type="text/css">
+      /** Grimage CSS**/
+      <?php
+        echo get_option('grimage_grimagecustomcss');
+      ?>
+    </style>
+  <?php }
 
   /**
    * The JS to get address to the header.
