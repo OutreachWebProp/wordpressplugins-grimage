@@ -31,8 +31,7 @@ class Grimage
   }
 
     public function register_grimage_admin_menus(){
-        //string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null
-      add_options_page('Grimage settings','Grimage Settings','manage_options','grimage_options',array($this,'grimage_options_page'));
+      add_options_page('Grimage settings','Grimage','manage_options','grimage_options',array($this,'grimage_options_page'));
     }
 
     public function grimage_options_page(){
