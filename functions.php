@@ -12,7 +12,7 @@ class Grimage
 {
   public function __construct()
   {
-   add_action('admin_init',array($this,'admin_stuff'));
+   add_action('admin_init',array($this,'register_grimage_admin_menus'));
    add_action('wp_loaded',array($this,'my_front_end_stuff'));
   }
 
@@ -21,10 +21,6 @@ class Grimage
     add_filter('the_content',array($this,'replaceImagesWithGrimages'));
     add_action('wp_head',array($this,'hook_js'));
     add_action('wp_footer',array($this,'grimage_modal'));
-  }
-
-  public function admin_stuff(){
-    add_action( 'admin_menu', array($this,'register_grimage_admin_menus'));
   }
 
   public function myScripts()
