@@ -67,7 +67,8 @@ class Grimage
 
         <div style="margin-top:10px;">
           <label for="display_option"><strong>Display Option:</strong></label>
-          <input type="radio" name="display_option" value="under" /> Under <small>(link will be displayed below posts.)</small> <input type="radio" name="display_option" value="over" /> Over <small>(link will be displayed on hover)</small>
+          <input type="radio" name="display_option" value="under" <?php if(get_option('grimage_display_option') == 'under') echo "selected"; ?> /> Under <small>(link will be displayed below posts.)</small>
+          <input type="radio" name="display_option" value="over" <?php if(get_option('grimage_display_option') == 'over') echo "selected"; ?> /> Over <small>(link will be displayed on hover)</small>
         </div>
         
         <div style="margin-top:10px;"><label for="facebook_appid"><strong>Facebook AppID:</strong></label><br/>
@@ -106,6 +107,7 @@ class Grimage
     update_option('grimage_modalcontent', $post['modalcontent']);
     update_option('grimage_grimagecustomcss', $post['grimagecustomcss']);
     update_option('grimage_fb_linktext', $post['grimage_fb_linktext']);
+    update_option('grimage_display_option', $post['display_option']);
     return true;
   }
 
