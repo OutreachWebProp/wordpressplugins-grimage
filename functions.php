@@ -71,7 +71,7 @@ class Grimage
 
         <div style="margin-top:10px;">
           <label for="display_option"><strong>Display Option:</strong></label>
-          <input type="radio" name="display_option" value="none" <?php if(get_option('grimage_display_option') == 'none') echo "checked"; ?> /> Under <small></small>
+          <input type="radio" name="display_option" value="none" <?php if(get_option('grimage_display_option') == 'none') echo "checked"; ?> /> None <small>(deactivate pluginjgit add -a)</small>
           <input type="radio" name="display_option" value="under" <?php if(get_option('grimage_display_option') == 'under') echo "checked"; ?> /> Under <small>(link will be displayed below posts.)</small>
           <input type="radio" name="display_option" value="over" <?php if(get_option('grimage_display_option') == 'over') echo "checked"; ?> /> Over <small>(link will be displayed on hover)</small>
         </div>
