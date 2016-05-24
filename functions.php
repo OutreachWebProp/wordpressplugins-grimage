@@ -64,6 +64,13 @@ class Grimage
     <div class="wrap">
       <h2>Grimage Settings</h2>
       <form name="grimage_form" method="post" action="">
+
+        <div>
+          <label for="display_option">Display Option:</label>
+          <input type="radio" name="display_option" value="under" /> Under <small>(link will be displayed below posts.)</small> <input type="radio" name="display_option" value="over" /> Over <small>(link will be displayed on hover)</small>
+        </div>
+
+
         <div><label for="facebook_appid">Facebook AppID:</label><br/>
           <input type="text" name="facebook_appid" placeholder="app id" id="facebook_appid"
                  value="<?php if (get_option('grimage_facebook_appid')) echo get_option("grimage_facebook_appid"); ?>"/>
@@ -81,6 +88,7 @@ class Grimage
           <label for="grimagecustomcss">Custom CSS</label><br/>
                     <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_grimagecustomcss')); ?></textarea>
         </div>
+
 
         <div>
           <button type="submit" class="button btn btn-primary">Update</button>
