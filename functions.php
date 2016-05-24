@@ -74,7 +74,7 @@ class Grimage
         </div>
         <div>
           <label for="grimage_fb_linktext">FB Link Text</label><br/>
-                    <input type="text" name="grimage_fb_linktext" id="grimage_fb_linktext" style="" value="<?php echo stripslashes(get_option('grimage_modalcontent')); ?>" />
+                    <input type="text" name="grimage_fb_linktext" id="grimage_fb_linktext" style="" value="<?php echo stripslashes(get_option('grimage_fb_linktext')); ?>" />
         </div>
 
         <div>
