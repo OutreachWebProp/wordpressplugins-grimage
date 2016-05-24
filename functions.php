@@ -65,30 +65,30 @@ class Grimage
       <h2>Grimage Settings</h2>
       <form name="grimage_form" method="post" action="">
 
-        <div>
+        <div style="margin-top:10px;">
           <label for="display_option"><strong>Display Option:</strong></label>
           <input type="radio" name="display_option" value="under" /> Under <small>(link will be displayed below posts.)</small> <input type="radio" name="display_option" value="over" /> Over <small>(link will be displayed on hover)</small>
         </div>
         
-        <div><label for="facebook_appid"><strong>Facebook AppID:</strong></label><br/>
+        <div style="margin-top:10px;"><label for="facebook_appid"><strong>Facebook AppID:</strong></label><br/>
           <input type="text" name="facebook_appid" placeholder="app id" id="facebook_appid"
                  value="<?php if (get_option('grimage_facebook_appid')) echo get_option("grimage_facebook_appid"); ?>"/>
         </div>
-        <div>
+        <div style="margin-top:10px;">
           <label for="modalcontent"><strong>Modal Content</strong></label><br/>
                     <textarea name="modalcontent" id="modalcontent" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_modalcontent')); ?></textarea>
         </div>
-        <div>
+        <div style="margin-top:10px;">
           <label for="grimage_fb_linktext"><strong>FB Link Text</strong></label><br/>
                     <input type="text" name="grimage_fb_linktext" id="grimage_fb_linktext" style="" value="<?php echo stripslashes(get_option('grimage_fb_linktext')); ?>" />
         </div>
 
-        <div>
+        <div style="margin-top:10px;">
           <label for="grimagecustomcss"><strong>Custom CSS</strong></label><br/>
                     <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_grimagecustomcss')); ?></textarea>
         </div>
 
-        <div>
+        <div style="margin-top:10px;">
           <button type="submit" class="button btn btn-primary">Update</button>
         </div>
       </form>
