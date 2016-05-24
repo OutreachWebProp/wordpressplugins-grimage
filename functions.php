@@ -74,12 +74,12 @@ class Grimage
         </div>
         <div>
           <label for="grimage_fb_linktext">FB Link Text</label><br/>
-                    <input type="text" name="grimage_fb_linktext" id="grimage_fb_linktext" style=""><?php echo stripslashes(get_option('grimage_fb_linktext')); ?></input>
+                    <input type="text" name="grimage_fb_linktext" id="grimage_fb_linktext" style="" value="<?php echo stripslashes(get_option('grimage_modalcontent')); ?>" />
         </div>
 
         <div>
           <label for="grimagecustomcss">Custom CSS</label><br/>
-                    <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;" value="<?php echo stripslashes(get_option('grimage_grimagecustomcss')); ?>" />
+                    <textarea name="grimagecustomcss" id="grimagecustomcss" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_grimagecustomcss')); ?></textarea>
         </div>
 
         <div>
