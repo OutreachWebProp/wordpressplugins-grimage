@@ -22,10 +22,14 @@ class Grimage
   public function my_front_end_stuff()
   {
     add_action('wp_enqueue_scripts', array($this, 'myScripts'));
-    add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
-    add_action('wp_head', array($this, 'hook_js'));
-    add_action('wp_head', array($this, 'hook_css'));
-    add_action('wp_footer', array($this, 'grimage_modal'));
+
+    // Don't load the filters if the display option is toggled to NONE!
+    if(get_option('grimage_display_options') != "none") {
+      add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
+      add_action('wp_head', array($this, 'hook_js'));
+      add_action('wp_head', array($this, 'hook_css'));
+      add_action('wp_footer', array($this, 'grimage_modal'));
+    }
   }
 
   /**
@@ -67,6 +71,7 @@ class Grimage
 
         <div style="margin-top:10px;">
           <label for="display_option"><strong>Display Option:</strong></label>
+          <input type="radio" name="display_option" value="none" <?php if(get_option('grimage_display_option') == 'none') echo "checked"; ?> /> Under <small></small>
           <input type="radio" name="display_option" value="under" <?php if(get_option('grimage_display_option') == 'under') echo "checked"; ?> /> Under <small>(link will be displayed below posts.)</small>
           <input type="radio" name="display_option" value="over" <?php if(get_option('grimage_display_option') == 'over') echo "checked"; ?> /> Over <small>(link will be displayed on hover)</small>
         </div>
