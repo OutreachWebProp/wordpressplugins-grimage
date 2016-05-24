@@ -72,6 +72,10 @@ class Grimage
           <label for="modalcontent">Modal Content</label><br/>
                     <textarea name="modalcontent" id="modalcontent" style="width:50%;height:400px;"><?php echo stripslashes(get_option('grimage_modalcontent')); ?></textarea>
         </div>
+        <div>
+          <label for="grimage_fb_linktext">FB Link Text</label><br/>
+                    <input type="text" name="grimage_fb_linktext" id="grimage_fb_linktext" style=""><?php echo stripslashes(get_option('grimage_fb_linktext')); ?></input>
+        </div>
 
         <div>
           <label for="grimagecustomcss">Custom CSS</label><br/>
@@ -95,6 +99,7 @@ class Grimage
     update_option('grimage_facebook_appid', $post['facebook_appid']);
     update_option('grimage_modalcontent', $post['modalcontent']);
     update_option('grimage_grimagecustomcss', $post['grimagecustomcss']);
+    update_option('grimage_fb_linktext', $post['grimage_fb_linktext']);
     return true;
   }
 
@@ -217,7 +222,7 @@ class Grimage
         $span_clone = $span->cloneNode();
         $image->parentNode->replaceChild($span_clone, $image);
         $span_clone->appendChild($image);
-        $fbbutton = $dom->createElement('i', ' SHARE (placeholder) &uarr;');
+        $fbbutton = $dom->createElement('i', get_option('grimage_fb_linktext')); //SHARE (placeholder) &uarr;
         $fbbutton->setAttribute('class', 'fa fa-facebook clicker');
         $span_clone->appendChild($fbbutton);
       }
