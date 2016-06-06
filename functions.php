@@ -222,7 +222,7 @@ class Grimage
   {
     // This will hide the share button from index/archive pages..
     if (!is_single()) return $the_content;
-    $html = utf8_encode($the_content);
+    $html = htmlentities($the_content);
     $dom = new DOMDocument('1.0', 'UTF-8');
     $dom->substituteEntities = false;
     $dom->loadHTML($html);
@@ -243,7 +243,7 @@ class Grimage
     }
     $dom->encoding = 'utf-8';
     $html = $dom->saveHTML();
-    return utf8_decode($html);
+    return $html;
   }
 
   /**
