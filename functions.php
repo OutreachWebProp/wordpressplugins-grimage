@@ -25,8 +25,8 @@ class Grimage
 
     // Don't load the filters if the display option is toggled to NONE!
     if(get_option('grimage_display_options') != "none") {
-      add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
-      //add_filter('the_content', array($this, 'replaceImagesWithGrimagesTwo'));
+      //add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
+      add_filter('the_content', array($this, 'replaceImagesWithGrimagesTwo'));
       add_action('wp_head', array($this, 'hook_js'));
       add_action('wp_head', array($this, 'hook_css'));
       add_action('wp_footer', array($this, 'grimage_modal'));
@@ -250,7 +250,7 @@ class Grimage
 
   public function replaceImagesWithGrimagesTwo($the_content){
     $pattern = '/(<img[^>]*class=\"([^>]*?)\"[^>]*>)/i';
-    $replacement = '<div class="grimage $2">$1</div>';
+    $replacement = '<div class="grimage $2">$1<i class="fa fa-facebook clicker">'.get_option("grimage_fb_linktext").'</i></div>';
     $the_content = preg_replace($pattern, $replacement, $the_content);
     return $the_content;
   }
