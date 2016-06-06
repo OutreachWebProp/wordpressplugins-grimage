@@ -244,7 +244,7 @@ class Grimage
 
     $dom->encoding = 'utf-8';
     $html = $dom->saveHTML();
-    return $html;
+    return html_entity_decodE($html);
   }
 
   /**
