@@ -2,9 +2,9 @@
 /*
 Plugin Name: Grimage
 Plugin URI: http://yourlocalwebmaster.com
-Description: Filters all images in content and wraps in a grimage div (grant image) which launches the FB share onclick w/ THAT image loaded into the status window. Apply a class of "nogrimage" to the image you do not want this to occur on.
+Description: Filters all images in content and wraps in a grimage div (grant image) which launches the FB share onclick w/ THAT image loaded into the status window.
 Author: Grant Kimball
-Version: 1.2
+Version: 1.5
 Author URI: http://yourlocalwebmaster.com
  */
 
@@ -216,38 +216,9 @@ class Grimage
 
   /**
    * @param $the_content
-   * @return string
-   * Parse the content and replace the images with the facebook share wrapper. (unless there is a nogrimage class assigned to the image)
+   * @return mixed
+   * Parse the content and replace the images with the facebook share wrapper.
    */
-  public function replaceImagesWithGrimages($the_content)
-  {
-    // This will hide the share button from index/archive pages..
-    if (!is_single()) return $the_content;
-    $html =$the_content;
-    $dom = new DOMDocument('1.0', 'UTF-8');
-    $dom->substituteEntities = true;
-    $dom->loadHTML($html);
-    $div = $dom->createElement('div');
-    $div->setAttribute('class', 'grimage');
-    //$div->setAttribute('onClick', 'shareThisImage()');
-    $images = $dom->getElementsByTagName('img');
-    foreach ($images as $image) {
-      // don't do it for images flagged nogrimage
-      if (strpos($image->getAttribute('class'), 'nogrimage') === false) {
-        $div_clone = $div->cloneNode();
-        $image->parentNode->replaceChild($div_clone, $image);
-        $div_clone->appendChild($image);
-        $fbbutton = $dom->createElement('i', get_option('grimage_fb_linktext')); //SHARE (placeholder) &uarr;
-        $fbbutton->setAttribute('class', 'fa fa-facebook clicker');
-        $div_clone->appendChild($fbbutton);
-      }
-    }
-
-    $dom->encoding = 'utf-8';
-    $html = $dom->saveHTML();
-    return $html;
-  }
-
   public function replaceImagesWithGrimagesTwo($the_content){
     $pattern = '/(<img[^>]*class=\"([^>]*?)\"[^>]*>)/i';
     $replacement = '<div class="grimage $2">$1<i class="fa fa-facebook clicker">'.get_option("grimage_fb_linktext").'</i></div>';
