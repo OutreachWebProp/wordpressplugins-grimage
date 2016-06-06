@@ -242,7 +242,7 @@ class Grimage
     }
     //$dom->substituteEntities = false;
     $dom->encoding = 'utf-8';
-    $html = $dom->saveHTML($dom->documentElement);
+    $html = $dom->saveHTML();
     return $html;
   }
 
