@@ -241,6 +241,7 @@ class Grimage
         $div_clone->appendChild($fbbutton);
       }
     }
+
     $dom->encoding = 'utf-8';
     $html = $dom->saveHTML();
     return html_entity_decode($html);
