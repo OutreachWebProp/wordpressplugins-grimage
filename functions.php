@@ -220,8 +220,9 @@ class Grimage
    * Parse the content and replace the images with the facebook share wrapper.
    */
   public function replaceImagesWithGrimagesTwo($the_content){
+    global $post;
     $pattern = '/(<img[^>]*class=\"([^>]*?)\"[^>]*>)/i';
-    $replacement = '<div class="grimage $2">$1<i class="fa fa-facebook clicker">'.get_option("grimage_fb_linktext").'</i></div>';
+    $replacement = '<div class="grimage $2">$1<i class="fa fa-facebook clicker">'.get_option("grimage_fb_linktext").' '.$post->ID.'</i></div>';
     $the_content = preg_replace($pattern, $replacement, $the_content);
     return $the_content;
   }
