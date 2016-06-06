@@ -224,7 +224,7 @@ class Grimage
     if (!is_single()) return $the_content;
     $html =$the_content;
     $dom = new DOMDocument('1.0', 'UTF-8');
-    $dom->substituteEntities = false;
+    $dom->substituteEntities = true;
     $dom->loadHTML($html);
     $div = $dom->createElement('div');
     $div->setAttribute('class', 'grimage');
