@@ -25,7 +25,8 @@ class Grimage
 
     // Don't load the filters if the display option is toggled to NONE!
     if(get_option('grimage_display_options') != "none") {
-      add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
+      //add_filter('the_content', array($this, 'replaceImagesWithGrimages'));
+      add_filter('the_content', array($this, 'replaceImagesWithGrimagesTwo'));
       add_action('wp_head', array($this, 'hook_js'));
       add_action('wp_head', array($this, 'hook_css'));
       add_action('wp_footer', array($this, 'grimage_modal'));
@@ -244,8 +245,17 @@ class Grimage
 
     $dom->encoding = 'utf-8';
     $html = $dom->saveHTML();
-    return html_entity_decodE($html);
+    return $html;
   }
+
+  public function replaceImagesWithGrimagesTwo($the_content){
+    $pattern = '/(<img[^>]*class=\"([^>]*?)\"[^>]*>)/i';
+    $replacement = '<div class="image-container $2">$1</div>';
+    $the_content = preg_replace($pattern, $replacement, $the_content);
+    return $the_content;
+  }
+
+
 
   /**
    * The modal CTA HTML which gets injected into the footer and launched after the grimage share dialog has been closed. Note:: Doesn't display if the cookie is set... see JS
