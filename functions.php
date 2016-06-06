@@ -2,7 +2,7 @@
 /*
 Plugin Name: Grimage
 Plugin URI: http://yourlocalwebmaster.com
-Description: Filters all images in content and wraps in a grimage span (grant image) which launches the FB share onclick w/ THAT image loaded into the status window. Apply a class of "nogrimage" to the image you do not want this to occur on.
+Description: Filters all images in content and wraps in a grimage div (grant image) which launches the FB share onclick w/ THAT image loaded into the status window. Apply a class of "nogrimage" to the image you do not want this to occur on.
 Author: Grant Kimball
 Version: 1.2
 Author URI: http://yourlocalwebmaster.com
@@ -75,7 +75,7 @@ class Grimage
           <input type="radio" name="display_option" value="under" <?php if(get_option('grimage_display_option') == 'under') echo "checked"; ?> /> Under <small>(link will be displayed below posts.)</small>
           <input type="radio" name="display_option" value="over" <?php if(get_option('grimage_display_option') == 'over') echo "checked"; ?> /> Over <small>(link will be displayed on hover)</small>
         </div>
-        
+
         <div style="margin-top:10px;"><label for="facebook_appid"><strong>Facebook AppID:</strong></label><br/>
           <input type="text" name="facebook_appid" placeholder="app id" id="facebook_appid"
                  value="<?php if (get_option('grimage_facebook_appid')) echo get_option("grimage_facebook_appid"); ?>"/>
@@ -225,19 +225,19 @@ class Grimage
     $html = $the_content;
     $dom = new DOMDocument('1.0', 'UTF-8');
     $dom->loadHTML($html);
-    $span = $dom->createElement('span');
-    $span->setAttribute('class', 'grimage');
-    //$span->setAttribute('onClick', 'shareThisImage()');
+    $div = $dom->createElement('div');
+    $div->setAttribute('class', 'grimage');
+    //$div->setAttribute('onClick', 'shareThisImage()');
     $images = $dom->getElementsByTagName('img');
     foreach ($images as $image) {
       // don't do it for images flagged nogrimage
       if (strpos($image->getAttribute('class'), 'nogrimage') === false) {
-        $span_clone = $span->cloneNode();
-        $image->parentNode->replaceChild($span_clone, $image);
-        $span_clone->appendChild($image);
+        $div_clone = $div->cloneNode();
+        $image->parentNode->replaceChild($div_clone, $image);
+        $div_clone->appendChild($image);
         $fbbutton = $dom->createElement('i', get_option('grimage_fb_linktext')); //SHARE (placeholder) &uarr;
         $fbbutton->setAttribute('class', 'fa fa-facebook clicker');
-        $span_clone->appendChild($fbbutton);
+        $div_clone->appendChild($fbbutton);
       }
     }
     $html = $dom->saveHTML();
