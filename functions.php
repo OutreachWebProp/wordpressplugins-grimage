@@ -171,8 +171,8 @@ class Grimage
             }
             return "";
           }
-
-          $('.grimage .clicker').click(function (e) {
+          // bind it late for infinite scroll posts....
+          $('.entry-content').on('click','.grimage .clicker',function (e) {
             console.log('sharing this page...'+$(e.currentTarget).data('url'));
             var image_url = $(e.currentTarget).siblings('img').attr('src');
             FB.ui({
