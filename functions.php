@@ -171,13 +171,11 @@ class Grimage
             }
             return "";
           }
-          // bind it late for infinite scroll posts....
-          $(document).on('click','.grimage .clicker',function (e) {
-            console.log('sharing this page...'+$(e.currentTarget).data('url'));
+          $('.grimage .clicker').click(function (e) {
             var image_url = $(e.currentTarget).siblings('img').attr('src');
             FB.ui({
               method: 'share',
-              href: $(e.currentTarget).data('url'),
+              href: '<?php echo the_permalink();?>',
               //               title: 'This should be set in the meta headers..',
               picture: image_url,
               //               caption: 'This should be set in the meta headers..',
@@ -223,7 +221,7 @@ class Grimage
   public function replaceImagesWithGrimagesTwo($the_content){
     global $post;
     $pattern = '/(<img[^>]*class=\"([^>]*?)\"[^>]*>)/i';
-    $replacement = '<div class="grimage $2">$1<i class="fa fa-facebook clicker" data-url="'.get_permalink($post->ID).'">'.get_option("grimage_fb_linktext").'</i></div>';
+    $replacement = '<div class="grimage $2">$1<i class="fa fa-facebook clicker">'.get_option("grimage_fb_linktext").' '.$post->ID.' '.get_permalink($post->ID).'</i></div>';
     $the_content = preg_replace($pattern, $replacement, $the_content);
     return $the_content;
   }
